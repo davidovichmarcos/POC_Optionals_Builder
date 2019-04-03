@@ -1,11 +1,11 @@
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
-import static java.util.Comparator.*;
+import static java.util.Comparator.comparing;
 
 public class Main {
 
@@ -29,12 +29,13 @@ public class Main {
 
         public static List<Event> getFirstFiveEventa(List<Event> events) {
         return  events.stream()
-                .filter(event -> event.getId() < 5)
+                .limit(5)
                 .collect(Collectors.toList());
         }
         public static List<Event> getSortedEvents(List<Event> events)
         {
-            return events.stream().sorted().collect(Collectors.toList());
+            //return events.stream().sorted(Comparator.comparing(Event::getName)).collect(Collectors.toList()); //Funca OK
+            return Collections.sort(events, Event::getName);
         }
 
 

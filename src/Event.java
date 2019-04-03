@@ -2,10 +2,11 @@
 import java.util.List;
 import java.util.stream.Collectors;
 
-public  class Event  {
-    private  String name;
-    private int id;
-    private  Location location;
+public class Event  {
+    private static int id;
+    private String name;
+
+    private Location location;
 
     public Event() {
     }
@@ -21,15 +22,16 @@ public  class Event  {
                 .filter( o -> o .getId()== id)
                 .collect(Collectors.toList());
     }
-    public int getId() {
-        return this.id;
+
+    public static Integer getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public  String getName() {
+    public String getName() {
         return name;
     }
 
